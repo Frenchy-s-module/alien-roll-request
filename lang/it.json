@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Tiro automatico per i giocatori presenti",
             "cleaningButtonLabel": "Cancella richieste in sospeso",
             "sendButtonLabel": "Invia richiesta di tiro!"
+        },
+        "SETTINGS": {
+            "title": "Token Ostili",
+            "details": "Mostra/nascondi token ostili"
         }
     }
 }

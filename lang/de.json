@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Automatischer Wurf für anwesende Spieler",
             "cleaningButtonLabel": "Ausstehende Anfragen löschen",
             "sendButtonLabel": "Würfelanfrage senden!"
+        },
+        "SETTINGS": {
+            "title": "Feindliche Tokens",
+            "details": "Feindliche Tokens anzeigen/verbergen"
         }
     }
 }

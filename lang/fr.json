@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Lancer automatique pour les présents",
             "cleaningButtonLabel": "Nettoyer les demandes en attente",
             "sendButtonLabel": "Envoyer la demande de lancer !"
+        },
+        "SETTINGS": {
+            "title": "Tokens Hostiles",
+            "details": "Afficher/maquer les tokens hostiles",
         }
     }
 }

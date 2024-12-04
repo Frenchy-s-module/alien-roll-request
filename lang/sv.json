@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Automatiskt kast för närvarande spelare",
             "cleaningButtonLabel": "Rensa väntande förfrågningar",
             "sendButtonLabel": "Skicka tärningskast förfrågan!"
+        },
+        "SETTINGS": {
+            "title": "Fientliga Tokens",
+            "details": "Visa/dölj fientliga tokens"
         }
     }
 }

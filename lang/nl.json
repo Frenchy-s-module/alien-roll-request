@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Automatische worp voor aanwezige spelers",
             "cleaningButtonLabel": "In afwachting van verzoeken wissen",
             "sendButtonLabel": "Stuur dobbelsteenworp verzoek!"
+        },
+        "SETTINGS": {
+            "title": "Vijandige Tokens",
+            "details": "Vijandige tokens tonen/verbergen"
         }
     }
 }
