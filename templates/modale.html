@@ -39,7 +39,7 @@
         {{#each attributes}}
             <label class="flex items-center cursor-pointer border border-primary p-1 rounded-md hover:text-light hover:bg-primary has-[input:checked]:text-light has-[input:checked]:bg-primary">
                 <input type="radio"  name="arr-attributes-input-radio" class="arr-attribute-input hidden" value="{{@key}}">
-                <span>{{ localizeByKey 'Ability' @key true }}</span>
+                <span>{{ localizeByKey @key }}</span>
             </label>
         {{else}}
             <span class="red">{{localize 'DICEROLLREQUEST.CONTENT.emptyAttributeList'}}</span>
@@ -51,7 +51,7 @@
         {{#each skills}}
             <label  class="flex items-center cursor-pointer border border-primary p-1 rounded-md hover:text-light hover:bg-primary has-[input:checked]:text-light has-[input:checked]:bg-primary">
                 <input type="radio" name="arr-skills-input-radio" class="arr-skill-input hidden" value="{{@key}}">
-                <span>{{ localizeByKey 'Skill' @key false }}</span>
+                <span>{{ localizeByKey @key }}</span>
             </label>
         {{else}}
             <span class="red">{{localize 'DICEROLLREQUEST.CONTENT.emptySkillList'}}</span>

@@ -1,6 +1,7 @@
 import { getAlienConfigration } from '../services/AlienService.js';
 import { ChatMessageService } from '../services/ChatMessageService.js';
 import { getModuleConfigration } from '../config.js';
+import { getActionKeyFromLabel, getTranslationFromAction }  from '../services/AlienService.js';
 
 export class Roller{
 
@@ -23,7 +24,9 @@ export class Roller{
         await this.determineDicesForRoll();
         const config = getModuleConfigration();
         const templatePath = `${config.templatePath}${this.template}`;
-        const content = await renderTemplate(templatePath, {tokenId: this.token.getId(), tokenName: this.token.getName(), label:this.rollName, number: this.diceNumber});
+        const actionKey = await getActionKeyFromLabel(this.rollName);
+        const actionTransleted = getTranslationFromAction(actionKey);
+        const content = await renderTemplate(templatePath, {tokenId: this.token.getId(), tokenName: this.token.getName(), label:actionTransleted, number: this.diceNumber});
 
         const chatMessageData = {
             whisper: users,
