@@ -16,8 +16,8 @@ export function getModuleConfigration(){
 
 export function registerModuleSettings(){
     game.settings.register(moduleId, "hostile", {
-        name: "Hostile Tokens",
-        hint: "Unable or disable hostile tokens",
+        name: game.i18n.localize("DICEROLLREQUEST.SETTINGS.title"),
+        hint: game.i18n.localize("DICEROLLREQUEST.SETTINGS.details"),
         scope: "world",
         config: true, 
         type: Boolean, 

@@ -27,3 +27,35 @@ async function getAlienTemplateDatas(){
   
     return await response.json();
 }
+
+export async function getActionKeyFromLabel(label){
+    const datas = await getAlienTemplateDatas();
+    const attributes = datas.Actor?.character?.attributes;
+    const skills = datas.Actor?.character?.skills;
+    if (!attributes) {
+        return null;
+    }
+    for (const key in attributes) {
+        if (attributes[key]?.label === label) {
+            return key;
+        }
+    }
+    for (const key in skills) {
+        if (attributes[key]?.label === label) {
+            return key;
+        }
+    }
+    return null;
+}
+
+export function getTranslationFromAction(label){
+    const upcased =  label.charAt(0).toUpperCase() + label.slice(1);
+    return localizeIfExists(`ALIENRPG.Skill${label}`) ?? localizeIfExists(`ALIENRPG.Ability${upcased}`);
+}
+
+function localizeIfExists(label){
+    if(game.i18n.localize(label) !== label){
+        return game.i18n.localize(label)
+    }
+    return null;
+}

@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Tirada automática para jugadores presentes",
             "cleaningButtonLabel": "Borrar solicitudes pendientes",
             "sendButtonLabel": "¡Enviar solicitud de tirada!"
+        },
+        "SETTINGS": {
+            "title": "Tokens Hostiles",
+            "details": "Mostrar/ocultar tokens hostiles"
         }
     }
 }

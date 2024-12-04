@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Automatisk kast for tilstedeværende spillere",
             "cleaningButtonLabel": "Rydd ventende forespørsler",
             "sendButtonLabel": "Send terningkast forespørsel!"
+        },
+        "SETTINGS": {
+            "title": "Fiendtlige Tokens",
+            "details": "Vis/skjul fiendtlige tokens"
         }
     }
 }

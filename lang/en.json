@@ -24,6 +24,10 @@
             "rollForPresentLabel": "Automatic roll for online players",
             "cleaningButtonLabel": "Clean pending requests",
             "sendButtonLabel": "Send Rolls Request!"
+        },
+        "SETTINGS": {
+            "title": "Hostile Tokens",
+            "details": "Show/hide hostile tokens"
         }
     }
 }
