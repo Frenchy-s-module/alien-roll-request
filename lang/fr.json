@@ -27,7 +27,7 @@
         },
         "SETTINGS": {
             "title": "Tokens Hostiles",
-            "details": "Afficher/maquer les tokens hostiles",
+            "details": "Afficher/maquer les tokens hostiles"
         }
     }
 }
