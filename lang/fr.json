@@ -3,8 +3,8 @@
         "MODALE" : {
             "minimizeButton" : "Minimiser",
             "modaleTitle" : "Demande de lancé de dés",
-            "pendingNotificationsCleared" : "Pending Notifications has been cleared",
-            "noElementSelectedNotification" : "You need to select at least a token and a skill or attribute"
+            "pendingNotificationsCleared" : "Les notifications en attente ont été effacées",
+            "noElementSelectedNotification" : "Vous devez sélectionner au moins un jeton et une compétence ou un attribut"
         },
         "REQUEST" : {
             "title": "vous êtes invité à lancer les dés pour",
@@ -13,17 +13,17 @@
         },
         "CONTENT": {
             "refreshButtonLabel": "recharger",
-            "tokenTitle": "Sélectionnez un ou plusieurs tokens",
-            "emptyTokenList": "No Tokens avaiable. Please make sure you have tokens on the Canvas",
-            "attributeTitle": "Sélectionner un attributs",
-            "emptyAttributeList": "Unable to load Attributes from AlienRPG",
-            "skillTitle": "Sélectionner un Skill",
-            "emptySkillList": "Unable to load Skills from AlienRPG",
+            "tokenTitle": "Sélectionnez un ou plusieurs jetons",
+            "emptyTokenList": "Aucun jeton disponible. Veuillez vous assurer que vous ayez des jetons sur la scène",
+            "attributeTitle": "Sélectionner un attribut",
+            "emptyAttributeList": "Impossible de charger les attributs depuis AlienRPG",
+            "skillTitle": "Sélectionner une compétence",
+            "emptySkillList": "Impossible de charger les compétences depuis AlienRPG",
             "paramTitle": "Paramètres complémentaires",
             "rollForMissingLabel": "Lancer automatique pour les absents",
             "rollForPresentLabel": "Lancer automatique pour les présents",
-            "cleaningButtonLabel": "Clean pending requests",
-            "sendButtonLabel": "Send Rolls Request !"
+            "cleaningButtonLabel": "Nettoyer les demandes en attente",
+            "sendButtonLabel": "Envoyer la demande de lancer !"
         }
     }
 }
