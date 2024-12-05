@@ -43,22 +43,24 @@ export class Roller{
             case Roller.RollTypeEnum.skill: 
                 const attributeLinked = alienConfig?.skills[this.key]?.ability;
                 this.diceNumber = this.token.getSkill(this.key) + this.token.getAttribute(attributeLinked);
-                this.rollName   = getTranslationFromAction(this.key) ?? 'undefined roll';
+                this.rollName   = alienConfig?.skills[this.key]?.label ?? 'undefined roll';
                 break;
             case Roller.RollTypeEnum.attribute: 
                 this.diceNumber = this.token.getAttribute(this.key);
-                this.rollName   = getTranslationFromAction(this.key) ?? 'undefined roll';
+                this.rollName   = alienConfig?.attributes[this.key]?.label ?? 'undefined roll';
                 break;
         }
     }
 
     async characterRoll(){
         await this.determineDicesForRoll();
+        const actionKey = await getActionKeyFromLabel(this.rollName);
+        const actionTransleted = getTranslationFromAction(actionKey);
         await game.alienrpg.yze.yzeRoll(
             'character',
             false,
             this.isPush,
-            this.rollName,
+            actionTransleted,
             this.diceNumber,
             game.i18n.localize('ALIENRPG.Black'),
             this.token.getStressValue(),
