@@ -43,11 +43,11 @@ export class Roller{
             case Roller.RollTypeEnum.skill: 
                 const attributeLinked = alienConfig?.skills[this.key]?.ability;
                 this.diceNumber = this.token.getSkill(this.key) + this.token.getAttribute(attributeLinked);
-                this.rollName   = alienConfig?.skills[this.key]?.label ?? 'undefined roll';
+                this.rollName   = getTranslationFromAction(this.key) ?? 'undefined roll';
                 break;
             case Roller.RollTypeEnum.attribute: 
                 this.diceNumber = this.token.getAttribute(this.key);
-                this.rollName   = alienConfig?.attributes[this.key]?.label ?? 'undefined roll';
+                this.rollName   = getTranslationFromAction(this.key) ?? 'undefined roll';
                 break;
         }
     }
