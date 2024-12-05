@@ -41,7 +41,7 @@ export async function getActionKeyFromLabel(label){
         }
     }
     for (const key in skills) {
-        if (attributes[key]?.label === label) {
+        if (skills[key]?.label === label) {
             return key;
         }
     }
@@ -58,4 +58,17 @@ function localizeIfExists(label){
         return game.i18n.localize(label)
     }
     return null;
+}
+
+export function mapSkillsByAttributes(skills, attributes){
+    let result = {};
+    for (const key in attributes) {
+        result[key] = Object.entries(skills)
+                .filter(([skillKey, skillValue]) => skillValue.ability === key)
+                .reduce((acc, [skillKey, skillValue]) => {
+                    acc[skillKey] = skillValue; // Keep the original skill key.
+                    return acc;
+                }, {});
+    }
+    return result;
 }

@@ -1,6 +1,6 @@
 import { Tokens }                from './Tokens.js';
 import { getModuleConfigration } from '../config.js';
-import { getAlienConfigration }  from '../services/AlienService.js';
+import { getAlienConfigration, mapSkillsByAttributes }  from '../services/AlienService.js';
 import { Roller }                from './Roller.js';
 import { RollService }           from '../services/RollService.js';
 import { ChatMessageService }    from '../services/ChatMessageService.js';
@@ -32,7 +32,8 @@ export class Modale{
         const tokens       = Tokens.getPlayersFromList(canvas.tokens.placeables);
         const skills       = alienConfig.skills;
         const attributes   = alienConfig.attributes;
-        const content      = await renderTemplate(templatePath, {tokens: tokens, skills:skills, attributes: attributes});
+        const sortedSkills = mapSkillsByAttributes(skills,attributes);
+        const content      = await renderTemplate(templatePath, {tokens: tokens, skills:sortedSkills, attributes: attributes});
         const dialog       = new Dialog({
             title  : game.i18n.localize("DICEROLLREQUEST.MODALE.modaleTitle"),
             content: content,
