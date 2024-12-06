@@ -12,9 +12,22 @@ export async function getAlienConfigration(){
 
     const moduleInfos = await getAlienTemplateDatas();
 
+    const attributes = [];
+    const skills     = [];
+
+    Object.entries(moduleInfos.Actor.character.skills).forEach(([key, value]) => {
+        value.key = key;
+        skills.push(value);
+    });
+    Object.entries(moduleInfos.Actor.character.attributes).forEach(([key, value]) => {
+        value.key = key;
+        value.skills = getSkillsFromAttributeKey(key, skills);
+        attributes.push(value);
+    });
+
     playableAction = {
         attributes: moduleInfos.Actor.character.attributes,
-        skills: moduleInfos.Actor.character.skills,
+        skills:     moduleInfos.Actor.character.skills
     };
 
     return playableAction;
@@ -60,15 +73,6 @@ function localizeIfExists(label){
     return null;
 }
 
-export function mapSkillsByAttributes(skills, attributes){
-    let result = {};
-    for (const key in attributes) {
-        result[key] = Object.entries(skills)
-                .filter(([skillKey, skillValue]) => skillValue.ability === key)
-                .reduce((acc, [skillKey, skillValue]) => {
-                    acc[skillKey] = skillValue; // Keep the original skill key.
-                    return acc;
-                }, {});
-    }
-    return result;
+function getSkillsFromAttributeKey(key, skills){
+    return  Object.values(skills).filter(el => el.ability === key);
 }

@@ -1,6 +1,6 @@
 import { Tokens }                                      from './Tokens.js';
 import { getModuleConfigration }                       from '../config.js';
-import { getAlienConfigration, mapSkillsByAttributes } from '../services/AlienService.js';
+import { getAlienConfigration } from '../services/AlienService.js';
 import { Roller }                                      from './Roller.js';
 import { RollService }                                 from '../services/RollService.js';
 import { ChatMessageService }                          from '../services/ChatMessageService.js';
@@ -30,10 +30,8 @@ export class Modale{
         // Obligé de tout loader pour un render 🥲
         const templatePath = `${config.templatePath}${this.template}`;
         const tokens       = Tokens.getPlayersFromList(canvas.tokens.placeables);
-        const skills       = alienConfig.skills;
         const attributes   = alienConfig.attributes;
-        const sortedSkills = mapSkillsByAttributes(skills,attributes);
-        const content      = await renderTemplate(templatePath, {tokens: tokens, skills:sortedSkills, attributes: attributes});
+        const content      = await renderTemplate(templatePath, {tokens: tokens, actions: attributes});
         const dialog       = new Dialog({
             title  : game.i18n.localize("DICEROLLREQUEST.MODALE.modaleTitle"),
             content: content,
@@ -76,10 +74,8 @@ export class Modale{
         const alienConfig                = await getAlienConfigration();
         const templatePath               = `${config.templatePath}${this.template}`;
         const tokens                     = Tokens.getPlayersFromList(canvas.tokens.placeables);
-        const skills                     = alienConfig.skills;
         const attributes                 = alienConfig.attributes;
-        const sortedSkills               = mapSkillsByAttributes(skills,attributes);
-        const content                    = await renderTemplate(templatePath, {tokens: tokens, skills:sortedSkills, attributes: attributes});
+        const content                    = await renderTemplate(templatePath, {tokens: tokens, actions: attributes});
               this.rootNode.data.content = content;
         this.rootNode?.render(true);
     }
