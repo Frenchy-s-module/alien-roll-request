@@ -47,7 +47,7 @@ export class Modale{
                 }
 
                 self.applyFormListeners(html);
-                this.syncPanic(...tokens);
+                //this.syncPanic(...tokens); No Need ? 
             },
             close: () => {
                 self.rootNode = null;
@@ -155,8 +155,8 @@ export class Modale{
         
         const config = getModuleConfigration();
         [...tokens].forEach(async (token) => {
-                        token  = token instanceof Tokens ? token : Tokens.getTokenFromId(token?.id ?? token);
-                  const target = document.querySelector(`#arr-token-item-${token.getId()} .arr-panic-state`);
+                token  = token instanceof Tokens ? token : Tokens.getTokenFromId(token?.id ?? token);
+                const target = document.querySelector(`#arr-token-item-${token.getId()} .arr-panic-state`);
             if(!target){return;}
 
             const panic = {
