@@ -1,9 +1,9 @@
-import { Tokens }                from './Tokens.js';
-import { getModuleConfigration } from '../config.js';
-import { getAlienConfigration, mapSkillsByAttributes }  from '../services/AlienService.js';
-import { Roller }                from './Roller.js';
-import { RollService }           from '../services/RollService.js';
-import { ChatMessageService }    from '../services/ChatMessageService.js';
+import { Tokens }                                      from './Tokens.js';
+import { getModuleConfigration }                       from '../config.js';
+import { getAlienConfigration, mapSkillsByAttributes } from '../services/AlienService.js';
+import { Roller }                                      from './Roller.js';
+import { RollService }                                 from '../services/RollService.js';
+import { ChatMessageService }                          from '../services/ChatMessageService.js';
 
 export class Modale{
     
@@ -78,7 +78,8 @@ export class Modale{
         const tokens                     = Tokens.getPlayersFromList(canvas.tokens.placeables);
         const skills                     = alienConfig.skills;
         const attributes                 = alienConfig.attributes;
-        const content                    = await renderTemplate(templatePath, {tokens: tokens, skills:skills, attributes: attributes});
+        const sortedSkills               = mapSkillsByAttributes(skills,attributes);
+        const content                    = await renderTemplate(templatePath, {tokens: tokens, skills:sortedSkills, attributes: attributes});
               this.rootNode.data.content = content;
         this.rootNode?.render(true);
     }
@@ -147,7 +148,7 @@ export class Modale{
         const config           = getModuleConfigration();
         const templatePath     = `${config.templatePath}${this.templateRollLigne}`;
         const rollResults      = RollService.getDicesFromRoll(roll);
-        target.innerHTML       = await renderTemplate(templatePath, {token: token.token, roll:rollResults });
+              target.innerHTML = await renderTemplate(templatePath, {token: token.token, roll:rollResults });
 
         await this.syncPanic(token);
     }
@@ -158,8 +159,8 @@ export class Modale{
         
         const config = getModuleConfigration();
         [...tokens].forEach(async (token) => {
-                  token  = token instanceof Tokens ? token : Tokens.getTokenFromId(token?.id ?? token);
-            const target = document.querySelector(`#arr-token-item-${token.getId()} .arr-panic-state`);
+                        token  = token instanceof Tokens ? token : Tokens.getTokenFromId(token?.id ?? token);
+                  const target = document.querySelector(`#arr-token-item-${token.getId()} .arr-panic-state`);
             if(!target){return;}
 
             const panic = {
