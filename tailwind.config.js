@@ -8,12 +8,12 @@ export default {
     colors: {
       transparent: 'transparent',
       'white': '#ffffff',
-      'midnight': '#041215',
-      'primary': '#124c4e',
-      'text': '#55b0b3',
-      'light': '#b6e7e9',
+      'midnight': '#000',
+      'primary': '#1c5c1f',
+      'text': '#1bb321',
+      'light': '#e8f9dd',
       'yellow': '#e3b536',
-      'red': '#e76666',
+      'red': '#e76666'
     },
     backgroundSize: {
       'auto': 'auto',
