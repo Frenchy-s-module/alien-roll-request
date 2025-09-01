@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "compatibility": {
     "minimum": "12",
-    "verified": "12"
+    "verified": "13"
   },
   "relationships": {
     "systems": [
@@ -22,7 +22,9 @@
   "esmodules": [
     "src/js/main.js"
   ],
-  "styles": ["styles/main.min.css"],
+  "styles": [
+    "styles/main.min.css"
+  ],
   "languages": [
     {
       "lang": "fr",
