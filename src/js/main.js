@@ -2,6 +2,7 @@ import { ChatMessageService } from "./services/ChatMessageService.js";
 import { Modale } from "./ressources/Modale.js";
 import { getModuleConfigration, registerModuleSettings } from './config.js';
 import { getTranslationFromAction }  from './services/AlienService.js';
+import { ControlButtonService } from "./services/ControlButtonService.js";
 
 let config = {};
 
@@ -18,7 +19,10 @@ Hooks.once("ready", async () => {
 
     // Initialise la fenêtre modale et les listeners pour les GM
     if(game.user.isGM){
-        const modale = new Modale(document.querySelector("#chat-controls .chat-control-icon"));
+
+        const modale = new Modale(
+            ControlButtonService.generateControlButton()
+        );
         ChatMessageService.cleanChatMessageByClassName('alien-request-roll');
         ChatMessageService.setMessageCreationListener(modale);
 
