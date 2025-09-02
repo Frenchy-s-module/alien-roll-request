@@ -61,18 +61,15 @@ export class Roller{
             const actionKey = await getActionKeyFromLabel(this.rollName);
             const actionTransleted = getTranslationFromAction(actionKey);
             await game.alienrpg.yze.yzeRoll(
-                'character',
-                false,
-                this.isPush,
-                actionTransleted,
-                this.diceNumber,
-                game.i18n.localize('ALIENRPG.Black'),
-                this.token.getStressValue(),
-                game.i18n.localize('ALIENRPG.Yellow'),
-                this.token.getActor().id,
-                "randomStringValue",
-                1,
-                null
+                'character', // actortype
+                false, // blind
+                this.isPush, // reRoll
+                actionTransleted, // label
+                this.diceNumber, // r1Dice
+                game.i18n.localize('ALIENRPG.Black'), // col1
+                this.token.getStressValue(), // r2Dice
+                game.i18n.localize('ALIENRPG.Yellow'), // col2
+                this.token.getActor().id, // actorid
             );
         }, 'publicroll');
 

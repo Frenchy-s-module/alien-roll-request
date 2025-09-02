@@ -75,8 +75,14 @@ export class ChatMessageService{
                 // Temporisation pour éviter une double notification dans le chat
                 setTimeout(
                     () => {
+                        // Le render de ChatMessage skip l'actor dans YZEDiceRoller si aucun token n'est selectionné .... 
+                        // On doit le forcer à la main
                         message.update({
-                            speaker: {alias: token.getName()}
+                            speaker: {
+                                token: token.getId(),
+                                actor: token.getActor().id,
+                                alias: token.getName()
+                            }
                         });
                     },
                     100
