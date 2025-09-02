@@ -105,8 +105,8 @@ export class ChatMessageService{
      * Met en place les listeners qui sont communs aux joueurs et GM
      */
     static setCommonListeners(){
-        Hooks.on("renderChatMessage" , (message, html, data) => {
-            html.find('.rollable')?.on('click', (element) => {
+        Hooks.on("renderChatMessageHTML" , (message, html, data) => {
+            html.querySelector('.rollable')?.on('click', (element) => {
                 const button  = element.currentTarget;
                 const dataset = button.dataset;
                 const token   = Tokens.getTokenFromId(dataset?.token).token;
