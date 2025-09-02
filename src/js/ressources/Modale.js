@@ -1,6 +1,6 @@
 import { Tokens }                                      from './Tokens.js';
 import { getModuleConfigration }                       from '../config.js';
-import { getAlienConfigration } from '../services/AlienService.js';
+import { getAlienConfigration }                        from '../services/AlienService.js';
 import { Roller }                                      from './Roller.js';
 import { RollService }                                 from '../services/RollService.js';
 import { ChatMessageService }                          from '../services/ChatMessageService.js';

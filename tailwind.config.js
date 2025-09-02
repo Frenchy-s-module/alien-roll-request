@@ -4,6 +4,10 @@ export default {
     './templates/*.html',
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
+  // Préserver les classes Font Awesome
+  corePlugins: {
+    preflight: false, // Désactive la réinitialisation des styles par défaut
+  },
   theme: {
     colors: {
       transparent: 'transparent',

@@ -75,8 +75,14 @@ export class ChatMessageService{
                 // Temporisation pour éviter une double notification dans le chat
                 setTimeout(
                     () => {
+                        // Le render de ChatMessage skip l'actor dans YZEDiceRoller si aucun token n'est selectionné .... 
+                        // On doit le forcer à la main
                         message.update({
-                            speaker: {alias: token.getName()}
+                            speaker: {
+                                token: token.getId(),
+                                actor: token.getActor().id,
+                                alias: token.getName()
+                            }
                         });
                     },
                     100
@@ -105,8 +111,8 @@ export class ChatMessageService{
      * Met en place les listeners qui sont communs aux joueurs et GM
      */
     static setCommonListeners(){
-        Hooks.on("renderChatMessage" , (message, html, data) => {
-            html.find('.rollable')?.on('click', (element) => {
+        Hooks.on("renderChatMessageHTML" , (message, html, data) => {
+            html.querySelector('.rollable')?.addEventListener('click', (element) => {
                 const button  = element.currentTarget;
                 const dataset = button.dataset;
                 const token   = Tokens.getTokenFromId(dataset?.token).token;
