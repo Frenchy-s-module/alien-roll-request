@@ -112,7 +112,6 @@ export class ChatMessageService{
      */
     static setCommonListeners(){
         Hooks.on("renderChatMessageHTML" , (message, html, data) => {
-            console.warn(html)
             html.querySelector('.rollable')?.addEventListener('click', (element) => {
                 const button  = element.currentTarget;
                 const dataset = button.dataset;
