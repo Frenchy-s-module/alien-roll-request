@@ -2,6 +2,7 @@ import { getAlienConfigration } from '../services/AlienService.js';
 import { ChatMessageService } from '../services/ChatMessageService.js';
 import { getModuleConfigration } from '../config.js';
 import { getActionKeyFromLabel, getTranslationFromAction }  from '../services/AlienService.js';
+import { RollModService } from '../services/RollModService.js';
 
 export class Roller{
 
@@ -21,6 +22,7 @@ export class Roller{
     }
 
     async createRollNotification(users = []){
+
         await this.determineDicesForRoll();
         const config = getModuleConfigration();
         const templatePath = `${config.templatePath}${this.template}`;
@@ -53,22 +55,26 @@ export class Roller{
     }
 
     async characterRoll(){
-        await this.determineDicesForRoll();
-        const actionKey = await getActionKeyFromLabel(this.rollName);
-        const actionTransleted = getTranslationFromAction(actionKey);
-        await game.alienrpg.yze.yzeRoll(
-            'character',
-            false,
-            this.isPush,
-            actionTransleted,
-            this.diceNumber,
-            game.i18n.localize('ALIENRPG.Black'),
-            this.token.getStressValue(),
-            game.i18n.localize('ALIENRPG.Yellow'),
-            this.token.getActor().id,
-            "randomStringValue",
-            1,
-            null
-        );
+
+        await RollModService.withTemporaryMode(async () => {
+            await this.determineDicesForRoll();
+            const actionKey = await getActionKeyFromLabel(this.rollName);
+            const actionTransleted = getTranslationFromAction(actionKey);
+            await game.alienrpg.yze.yzeRoll(
+                'character',
+                false,
+                this.isPush,
+                actionTransleted,
+                this.diceNumber,
+                game.i18n.localize('ALIENRPG.Black'),
+                this.token.getStressValue(),
+                game.i18n.localize('ALIENRPG.Yellow'),
+                this.token.getActor().id,
+                "randomStringValue",
+                1,
+                null
+            );
+        }, 'publicroll');
+
     }
 }
